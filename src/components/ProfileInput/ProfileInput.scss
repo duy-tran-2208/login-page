@@ -1,0 +1,73 @@
+$place-holder: #e1e4e8;
+$pink: #bd10e0;
+$pink-hover: #520761;
+
+.profile-input-container {
+  position: relative;
+
+  .reveal {
+    position: absolute;
+    top: 18px;
+    right: 30px;
+    // width: 25px;
+    // height: 25px;
+    // background-color: $pink;
+
+    &:hover {
+      cursor: pointer;
+      // background-color: $pink-hover;
+      // fill: $pink-hover;
+
+      svg {
+        path {
+          fill: $pink-hover;
+        }
+      }
+    }
+
+    svg {
+      width: 27px;
+      height: 18px;
+      path {
+        fill: $pink;
+      }
+
+      // &:hover {
+      //   cursor: pointer;
+      //   path {
+      //     fill: $pink-hover;
+      //   }
+      // }
+    }
+  }
+
+  label {
+    font-size: 16px;
+    color: #212020;
+    position: absolute;
+    top: -15px;
+    left: 13px;
+    background-color: white;
+    padding: 0 15px 0 10px;
+  }
+
+  .input {
+    width: 467px;
+    height: 60px;
+    border-radius: 4px;
+    border: solid 1px #212020;
+    font-size: 18px;
+    font-weight: 600;
+    color: #212020;
+    // margin-bottom: 20px;
+    //   outline: none !important;
+
+    &:focus {
+      // outline: none !important;
+    }
+
+    &::placeholder {
+      color: $place-holder;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+.profile-input-container {
+  position: relative;
+}
+
+.profile-input-container .reveal {
+  position: absolute;
+  top: 18px;
+  right: 30px;
+}
+
+.profile-input-container .reveal:hover {
+  cursor: pointer;
+}
+
+.profile-input-container .reveal:hover svg path {
+  fill: #520761;
+}
+
+.profile-input-container .reveal svg {
+  width: 27px;
+  height: 18px;
+}
+
+.profile-input-container .reveal svg path {
+  fill: #bd10e0;
+}
+
+.profile-input-container label {
+  font-size: 16px;
+  color: #212020;
+  position: absolute;
+  top: -15px;
+  left: 13px;
+  background-color: white;
+  padding: 0 15px 0 10px;
+}
+
+.profile-input-container .input {
+  width: 467px;
+  height: 60px;
+  border-radius: 4px;
+  border: solid 1px #212020;
+  font-size: 18px;
+  font-weight: 600;
+  color: #212020;
+}
+
+.profile-input-container .input::-webkit-input-placeholder {
+  color: #e1e4e8;
+}
+
+.profile-input-container .input:-ms-input-placeholder {
+  color: #e1e4e8;
+}
+
+.profile-input-container .input::-ms-input-placeholder {
+  color: #e1e4e8;
+}
+
+.profile-input-container .input::placeholder {
+  color: #e1e4e8;
+}
+/*# sourceMappingURL=ProfileInput.css.map */

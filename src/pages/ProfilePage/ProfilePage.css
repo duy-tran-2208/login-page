@@ -1,0 +1,191 @@
+.profile-page-container {
+  padding-bottom: 30px;
+}
+
+.profile-page-container .header-container {
+  width: 100%;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 30px 50px 0 rgba(45, 44, 101, 0.05);
+          box-shadow: 0 30px 50px 0 rgba(45, 44, 101, 0.05);
+  background-color: #4d0c5a;
+  padding: 28px 0 28px 92px;
+}
+
+.profile-page-container .header-container .header {
+  text-transform: capitalize;
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+}
+
+.profile-page-container .header-container .desc {
+  opacity: 0.8;
+  font-size: 18px;
+  color: white;
+}
+
+.profile-page-container main {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 38px;
+}
+
+.profile-page-container main .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profile-page-container main .top .name {
+  font-size: 32px;
+  font-weight: bold;
+  margin-left: 24px;
+}
+
+.profile-page-container main .top .avatar {
+  width: 60px;
+  height: 60px;
+  position: relative;
+}
+
+.profile-page-container main .top .avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.profile-page-container main .top .avatar #pencil-svg {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+}
+
+.profile-page-container main .top .avatar #pencil-svg:hover {
+  cursor: pointer;
+}
+
+.profile-page-container main .top .avatar #pencil-svg:hover #Oval1 {
+  fill: #bd10e0;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.profile-page-container main .top .avatar #pencil-svg:hover #Oval2 {
+  fill: white;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.profile-page-container main .top .avatar #pencil-svg:hover #Shape {
+  fill: #bd10e0;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.profile-page-container main .content {
+  padding-top: 43px;
+}
+
+.profile-page-container main .content .form {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (467px)[2];
+      grid-template-columns: repeat(2, 467px);
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+  grid-gap: 31px;
+}
+
+.profile-page-container main .content .first-form {
+      grid-template-areas: "name ." "phone email";
+}
+
+.profile-page-container main .content .first-form #full-name {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: name;
+}
+
+.profile-page-container main .content .first-form #email {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: email;
+}
+
+.profile-page-container main .content .first-form #phone {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: phone;
+}
+
+.profile-page-container main .content .divide {
+  margin: 23px 0;
+  width: 971px;
+  height: 2px;
+  opacity: 0.4;
+  background-color: #bfc2d3;
+}
+
+.profile-page-container main .content .change-pass {
+  font-size: 18px;
+  color: #bfc2d3;
+}
+
+.profile-page-container main .content .second-form {
+  margin-top: 35px;
+      grid-template-areas: "current current" "new confirm";
+}
+
+.profile-page-container main .content .second-form #current-pass {
+  grid-area: "current" !important;
+}
+
+.profile-page-container main .content .second-form #new-pass {
+  grid-area: "new" !important;
+}
+
+.profile-page-container main .content .second-form #confirm-pass {
+  grid-area: "confirm" !important;
+}
+
+.profile-page-container main .btn-container {
+  margin-top: 40px;
+}
+
+.profile-page-container main .btn-container .btn {
+  height: 60px;
+  border-radius: 30px;
+  font-size: 24px;
+  font-weight: 600;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.profile-page-container main .btn-container .btn-save {
+  width: 133px;
+  margin-right: 35px;
+  background-color: #bd10e0;
+  border: 1px solid #bd10e0;
+}
+
+.profile-page-container main .btn-container .btn-save:active {
+  background-color: white;
+  color: #bd10e0;
+}
+
+.profile-page-container main .btn-container .btn-logout {
+  width: 180px;
+  background-color: white;
+  border: 1px solid #bd10e0;
+  color: #bd10e0;
+}
+
+.profile-page-container main .btn-container .btn-logout:active {
+  background-color: #bd10e0;
+  color: white;
+}
+/*# sourceMappingURL=ProfilePage.css.map */

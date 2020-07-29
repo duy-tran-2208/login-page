@@ -1,0 +1,118 @@
+.input-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  margin-bottom: 19px;
+}
+
+.input-wrapper label {
+  color: #6b6c6f;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.input-wrapper .input {
+  width: 350px;
+  height: 40px;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.05);
+          box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.05);
+  border: solid 1px #dfe2e6;
+  border-color: black;
+  line-height: 50px;
+  font-size: 14px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 44px;
+  font-weight: 600;
+  color: black;
+  outline: none;
+}
+
+.input-wrapper .input::-webkit-input-placeholder {
+  color: #e1e4e8;
+  color: black;
+}
+
+.input-wrapper .input:-ms-input-placeholder {
+  color: #e1e4e8;
+  color: black;
+}
+
+.input-wrapper .input::-ms-input-placeholder {
+  color: #e1e4e8;
+  color: black;
+}
+
+.input-wrapper .input::placeholder {
+  color: #e1e4e8;
+  color: black;
+}
+
+.input-wrapper .input:focus {
+  outline: none;
+}
+
+.input-wrapper .icon {
+  position: absolute;
+  bottom: 10px;
+  right: 90%;
+  -webkit-transition: -webkit-transform 0.3s ease-in;
+  transition: -webkit-transform 0.3s ease-in;
+  transition: transform 0.3s ease-in;
+  transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in;
+}
+
+.input-wrapper .animate {
+  -webkit-animation: Animation;
+          animation: Animation;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
+.input-wrapper .line {
+  height: 3px;
+  background-color: #00be00;
+  position: absolute;
+  bottom: 3px;
+  left: 46px;
+}
+
+@-webkit-keyframes Animation {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes Animation {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+/*# sourceMappingURL=Input.css.map */
