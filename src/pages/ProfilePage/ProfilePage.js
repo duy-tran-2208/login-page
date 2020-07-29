@@ -71,6 +71,8 @@ const ProfilePage = () => {
 
   const token = localStorage.getItem("token");
 
+  let uploadInput = null;
+
   const update = async () => {
     const info = {
       email: mail,
@@ -162,6 +164,9 @@ const ProfilePage = () => {
   };
 
   useEffect(() => {
+    // uploadInput = document.querySelector("#upload-input");
+    console.log(uploadInput);
+
     const profileData = jwt.decode(token);
     console.log(profileData);
     const { email, name, phone, avatar } = profileData;
@@ -192,8 +197,27 @@ const ProfilePage = () => {
         </div>
 
         <div className="content">
-          <input type="file" onChange={(e) => fileSelectedHandler(e)} />
-          <button onClick={() => fileUploadHandler()}>Upload</button>
+          <input
+            id="upload-input"
+            style={{ display: "none" }}
+            ref={(input) => {
+              uploadInput = input;
+            }}
+            type="file"
+            onChange={(e) => fileSelectedHandler(e)}
+          />
+
+          <button
+            id="pick-btn"
+            style={{ marginLeft: "300px" }}
+            onClick={() => uploadInput.click()}
+          >
+            Pick
+          </button>
+          <button id="upload-btn" onClick={() => fileUploadHandler()}>
+            Upload
+          </button>
+
           <form className="form first-form">
             <ProfileInput
               label="Full name"
