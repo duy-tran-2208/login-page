@@ -7,10 +7,17 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { update, changePassword, uploadFile } from '../../actions/userAction';
 
-import axios from 'axios';
+import {
+  validName,
+  validPassword,
+  validPhone,
+  validConfirm,
+  validMail,
+} from '../../util/validation';
+
 import jwt from 'jsonwebtoken';
 
-import avatar1 from '../../images/avatar.png';
+import spinner from '../../images/spinner.gif';
 import ProfileInput from '../../components/ProfileInput/ProfileInput';
 
 const PencilSvg = (props) => {
@@ -75,7 +82,8 @@ const PASS_FAIL = 'Password not match.';
 
 const ProfilePage = (props) => {
   const { user } = props;
-  // console.log(user);
+  const { loading, error } = props;
+
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
   const [mail, setMail] = useState('');
@@ -93,50 +101,47 @@ const ProfilePage = (props) => {
   let token = localStorage.getItem('token');
 
   let uploadInput = null;
+  let overlayRef = null;
 
   const setInputFieldVaid = (isValid) => {
     setInputValid(isValid);
   };
 
   const validSubmit = () => {
-    if (pass === '' && newPass === '' && confirmPass === '') {
-      // If user doesn't choose to change password
-      if (inputValid) {
-        return true;
-      }
-    }
+    const validateName = validName(fullName);
+    const validateMail = validMail(mail);
+    const validatePhone = validPhone(phone);
+    console.log(validateMail);
+    console.log(validatePhone);
+    console.log(validateName);
 
-    if (inputValid) {
-      if (pass !== '' && newPass !== '' && confirmPass !== '') {
-        // If user chooses to change password
+    if (validateName && validateMail && validatePhone) {
+      if (pass === '' && newPass === '' && confirmPass === '') {
+        // If user doesn't choose to change password
+        console.log('OK');
         return true;
-      } else {
-        return false;
       }
-    } else {
-      return false;
+      console.log('CHECK PASS');
+      return (
+        validPassword(pass) &&
+        validPassword(newPass) &&
+        validConfirm(newPass, confirmPass)
+      );
     }
+    return false;
   };
 
   const save = async () => {
     if (!newPass && !pass) {
-      await update({ email: mail, name: fullName, phone });
+      await update({ mail, name: fullName, phone });
     } else {
-      // const [updateSuccess, changePassSuccess] = await Promise.all([
-      //   update({ email: mail, name: fullName, phone }),
-      //   changePassword({
-      //     password: newPass,
-      //     currentPassword: pass,
-      //   }),
-      // ]);
       await Promise.all([
-        update({ email: mail, name: fullName, phone }),
+        update({ mail, name: fullName, phone }),
         changePassword({
           password: newPass,
           currentPassword: pass,
         }),
       ]);
-      // console.log('SAVE: ' + (updateSuccess && changePassSuccess));
     }
   };
 
@@ -157,26 +162,20 @@ const ProfilePage = (props) => {
     await uploadFile({ formData });
   };
 
-  const saveState = (state) => {
-    try {
-      const serializedState = JSON.stringify(user);
-      localStorage.setItem('user', serializedState);
-    } catch (e) {
-      // Ignore write errors;
-    }
-  };
-
-  const loadState = () => {
-    try {
-      const serializedState = localStorage.getItem('user');
-      if (serializedState === null) {
-        return undefined;
+  useEffect(() => {
+    const displaySpinner = () => {
+      if (
+        (loading.update || loading.changePassword || loading.uploadFile) &&
+        overlayRef
+      ) {
+        overlayRef.classList.add('show');
+      } else {
+        overlayRef.classList.remove('show');
       }
-      return JSON.parse(serializedState);
-    } catch (e) {
-      return undefined;
-    }
-  };
+    };
+
+    displaySpinner();
+  }, [loading]);
 
   useEffect(() => {
     if (selectedFile) {
@@ -199,9 +198,9 @@ const ProfilePage = (props) => {
     }
     // Redux store has empty data when refreshing the page
     else {
-      // token = localStorage.getItem('token');
       console.log(token);
       const localData = jwt.decode(token);
+
       if (localData) {
         console.log(localData);
         console.log(localData);
@@ -229,6 +228,10 @@ const ProfilePage = (props) => {
           <div className='avatar'>
             <img src={avatar} />
             <PencilSvg onClick={() => uploadInput.click()} />
+          </div>
+
+          <div className='error-message upload-image'>
+            <p>{error.uploadFile}</p>
           </div>
 
           <span className='name'>{fullName}</span>
@@ -260,7 +263,6 @@ const ProfilePage = (props) => {
               value={fullName}
               onChange={(e) => {
                 setFullName(e.target.value);
-                console.log(fullName);
               }}
               setInputFieldVaid={setInputFieldVaid}
             />
@@ -274,7 +276,6 @@ const ProfilePage = (props) => {
               value={mail}
               onChange={(e) => {
                 setMail(e.target.value);
-                console.log(mail);
               }}
               setInputFieldVaid={setInputFieldVaid}
             />
@@ -288,12 +289,14 @@ const ProfilePage = (props) => {
               value={phone}
               onChange={(e) => {
                 setPhone(e.target.value);
-                console.log(phone);
               }}
               setInputFieldVaid={setInputFieldVaid}
             />
 
-            {/* <p className="error">This is a error message</p> */}
+            {/* <div className={`${submitErrorClass()}`}> */}
+            <div className='error-message update'>
+              <p>{error.update}</p>
+            </div>
           </form>
 
           <div className='divide'></div>
@@ -310,7 +313,6 @@ const ProfilePage = (props) => {
               value={pass}
               onChange={(e) => {
                 setPass(e.target.value);
-                console.log(pass);
               }}
               setInputFieldVaid={setInputFieldVaid}
             />
@@ -324,7 +326,6 @@ const ProfilePage = (props) => {
               value={newPass}
               onChange={(e) => {
                 setNewPass(e.target.value);
-                console.log(newPass);
               }}
               setInputFieldVaid={setInputFieldVaid}
             />
@@ -339,10 +340,13 @@ const ProfilePage = (props) => {
               value={confirmPass}
               onChange={(e) => {
                 setConfirmPass(e.target.value);
-                console.log(confirmPass);
               }}
               setInputFieldVaid={setInputFieldVaid}
             />
+
+            <div className='error-message change-password'>
+              <p>{error.changePassword}</p>
+            </div>
           </form>
         </div>
 
@@ -350,8 +354,13 @@ const ProfilePage = (props) => {
           <button
             type='button'
             className='button btn btn-primary btn-save'
-            // onClick={() => save()}
-            onClick={() => console.log(validSubmit())}
+            onClick={() => {
+              const isValid = validSubmit();
+              console.log(isValid);
+              if (isValid) {
+                save();
+              }
+            }}
           >
             Save
           </button>
@@ -363,12 +372,23 @@ const ProfilePage = (props) => {
           </Link>
         </div>
       </main>
+
+      <div
+        className='overlay'
+        ref={(ref) => {
+          overlayRef = ref;
+        }}
+      >
+        <img src={spinner} />
+      </div>
     </div>
   );
 };
 
 const mapStateToProp = (state) => ({
   user: state.user.info,
+  loading: state.user.loading,
+  error: state.user.error,
 });
 
 ProfilePage.propTypes = {
@@ -376,6 +396,8 @@ ProfilePage.propTypes = {
   changePassword: PropTypes.func.isRequired,
   uploadFile: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
+  loading: PropTypes.object.isRequired,
+  error: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProp, { update, changePassword, uploadFile })(

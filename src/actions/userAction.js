@@ -19,10 +19,9 @@ import {
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
 
-const LOGIN_FAIL_MESSAGE = 'Password is incorrect';
 const LOGIN_SUCCESS_MESSAGE = 'Login succeeded.';
-const REGISTER_FAIL_MESSAGE = 'Email already in use.';
-const CHANGE_PASS_FAIL_MESSAGE = 'Password not match.';
+const REGISTER_SUCCESS_MESSAGE = 'Created succeeded!';
+const CHANGE_PASS_SUCCESS_MESSAGE = 'Changed succeeded.';
 const HOST = 'http://api.terralogic.ngrok.io/';
 
 const login = ({ mail, password, history }) => {
@@ -41,17 +40,9 @@ const login = ({ mail, password, history }) => {
         bodyInfo
       );
 
-      console.log(res.data);
+      console.log(res);
       const { msg, token } = res.data;
       data = res.data;
-
-      if (msg === LOGIN_FAIL_MESSAGE) {
-        dispatch({
-          type: LOGIN_FAIL,
-          payload: msg,
-        });
-        return;
-      }
 
       if (msg === LOGIN_SUCCESS_MESSAGE) {
         localStorage.setItem('token', token);
@@ -67,9 +58,7 @@ const login = ({ mail, password, history }) => {
           payload: info,
         });
 
-        console.log(history);
         history.push('/profile');
-        console.log(history);
       }
     } catch (error) {
       // localStorage.setItem('loginStatus', 'failed');
@@ -78,7 +67,7 @@ const login = ({ mail, password, history }) => {
 
       dispatch({
         type: LOGIN_FAIL,
-        payload: error,
+        payload: error.toString(),
       });
       // history.push('/login');
     }
@@ -104,18 +93,13 @@ const register = ({ mail, password, name, phone }) => {
 
       const { data } = res; // {email, name, phone, id}
 
-      if (data.msg === REGISTER_FAIL_MESSAGE) {
-        dispatch({ type: REGISTER_FAIL, payload: data.msg });
-      } else {
+      if (data.msg === REGISTER_SUCCESS_MESSAGE) {
         dispatch({ type: REGISTER_SUCCESS, payload: data });
+      } else {
+        dispatch({ type: REGISTER_FAIL, payload: data.msg });
       }
-
-      console.log(data);
-
-      //   localStorage.setItem('registerStatus', 'success');
     } catch (err) {
-      dispatch({ type: REGISTER_FAIL, payload: err });
-      //   localStorage.setItem('registerStatus', 'failed');
+      dispatch({ type: REGISTER_FAIL, payload: err.toString() });
       console.log(err);
     }
   };
@@ -130,6 +114,8 @@ const update = ({ mail, name, phone, avatar }) => {
       phone,
       avatar,
     };
+
+    console.log(bodyInfo);
 
     const token = localStorage.getItem('token');
 
@@ -153,7 +139,7 @@ const update = ({ mail, name, phone, avatar }) => {
     } catch (err) {
       console.log('UPDATE FAIL');
       console.log(err);
-      dispatch({ type: UPDATE_FAIL, payload: err });
+      dispatch({ type: UPDATE_FAIL, payload: err.toString() });
     }
   };
 };
@@ -182,18 +168,14 @@ const changePassword = ({ password, currentPassword }) => {
 
       console.log(res.data);
       const { msg } = res.data;
-      if (msg === CHANGE_PASS_FAIL_MESSAGE) {
-        dispatch({ type: CHANGE_PASS_FAIL, payload: msg });
-        console.log('CHANGE PASS FAILED');
-      } else {
+      if (msg === CHANGE_PASS_SUCCESS_MESSAGE) {
         const info = res.data.data;
         dispatch({ type: CHANGE_PASS_SUCCESS, payload: info });
-        console.log('CHANGE PASS SUCCESS');
+      } else {
+        dispatch({ type: CHANGE_PASS_FAIL, payload: msg });
       }
     } catch (err) {
       dispatch({ type: CHANGE_PASS_FAIL, payload: err });
-      console.log('CHANGE PASS FAIL');
-      console.log(err);
     }
   };
 };
@@ -220,18 +202,11 @@ const uploadFile = ({ formData }) => {
 
       const imgToken = res.data.data;
       const avatarLink = HOST + imgToken;
-      console.log(res.data);
 
       const uploadRes = await dispatch(update({ avatar: avatarLink }));
-      console.log('UPLOAD SUCCESS');
-      console.log(uploadRes);
-      // console.log(uploadRes.data);
-      // const info = uploadRes.data.data;
       dispatch({ type: UPLOAD_SUCCESS });
     } catch (err) {
-      console.log('UPLOAD FAIL');
-      console.log(err);
-      dispatch({ type: UPLOAD_FAIL, payload: err });
+      dispatch({ type: UPLOAD_FAIL, payload: err.toString() });
     }
   };
 };

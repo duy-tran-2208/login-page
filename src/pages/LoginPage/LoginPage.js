@@ -34,9 +34,8 @@ const inputElements = [
 ];
 
 const LoginPage = (props) => {
-  const { login, loading } = props; // login Action
-
-  // console.log(props.loading);
+  const { login } = props; // login Action
+  const { loading, error } = props; // states from Redux Store
 
   const [mail, setMail] = useState('');
   const [password, setPassword] = useState('');
@@ -73,20 +72,23 @@ const LoginPage = (props) => {
         login={login}
         loginSuccess={loginSuccess}
         loading={loading}
+        error={error}
       />
     </div>
   );
 };
 
 const mapStateToProp = (state) => ({
-  user: state.user,
+  // user: state.user,
   loading: state.user.loading.login,
+  error: state.user.error.login,
 });
 
 LoginPage.propTypes = {
   login: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired,
+  // user: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProp, { login })(LoginPage);

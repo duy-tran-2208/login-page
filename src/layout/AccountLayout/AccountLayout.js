@@ -93,45 +93,15 @@ const HeaderText = ({ kind }) => {
   return null;
 };
 
-const Modal = (title, body) => (
-  <div className='modal' tabindex='-1' role='dialog'>
-    <div className='modal-dialog' role='document'>
-      <div className='modal-content'>
-        <div className='modal-header'>
-          <h5 className='modal-title'>{title}</h5>
-          <button
-            type='button'
-            className='close'
-            data-dismiss='modal'
-            aria-label='Close'
-          >
-            <span aria-hidden='true'>&times;</span>
-          </button>
-        </div>
-        <div className='modal-body'>
-          <p>{body}</p>
-        </div>
-        <div className='modal-footer'>
-          <button
-            type='button'
-            className='btn btn-primary'
-            data-dismiss='modal'
-          >
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
 const AccountLayout = (props) => {
   const { header, inputElements, hasRemember, onChange } = props;
   const { mail, password, confirm, name, phone } = props;
   const { login, register, history } = props;
-  const { loading } = props;
+  const { loading, error } = props;
 
-  console.log(loading);
+  console.log(error);
+
+  // console.log(loading);
 
   let overlayRef = null;
 
@@ -225,58 +195,12 @@ const AccountLayout = (props) => {
     );
   };
 
+  const submitErrorClass = () => {
+    return header === 'register' ? 'submit-error register' : 'submit-error';
+  };
+
   return (
     <div className='layout-container'>
-      <button
-        type='button'
-        class='btn btn-primary'
-        data-toggle='modal'
-        data-target='#exampleModal'
-      >
-        Launch demo modal
-      </button>
-
-      <div
-        class='modal'
-        id='exampleModal'
-        tabindex='-1'
-        role='dialog'
-        aria-labelledby='exampleModalLabel'
-        aria-hidden='true'
-        // style={{ display: 'block' }}
-      >
-        <div class='modal-dialog' role='document'>
-          <div class='modal-content'>
-            <div class='modal-header'>
-              <h5 class='modal-title' id='exampleModalLabel'>
-                Modal title
-              </h5>
-              <button
-                type='button'
-                class='close'
-                data-dismiss='modal'
-                aria-label='Close'
-              >
-                <span aria-hidden='true'>&times;</span>
-              </button>
-            </div>
-            <div class='modal-body'>...</div>
-            <div class='modal-footer'>
-              <button
-                type='button'
-                class='btn btn-secondary'
-                data-dismiss='modal'
-              >
-                Close
-              </button>
-              <button type='button' class='btn btn-primary'>
-                Save changes
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div className='left'>
         <div className='logo'>
           <img src={logo} />
@@ -315,6 +239,10 @@ const AccountLayout = (props) => {
           {header === 'login' ? <LoginPageBtn /> : <RegisterPageBtn />}
 
           {hasRemember ? <RememberElement /> : null}
+        </div>
+
+        <div className={`${submitErrorClass()}`}>
+          <p>{error}</p>
         </div>
       </div>
 

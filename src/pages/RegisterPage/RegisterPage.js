@@ -56,6 +56,8 @@ const RegisterPage = (props) => {
 
   const { register } = props; // register Action
 
+  const { loading, error } = props; // states from Redux Store
+
   const onChange = (value, state) => {
     // console.log("CHANGE");
     if (state === 'mail') {
@@ -92,18 +94,24 @@ const RegisterPage = (props) => {
         name={name}
         phone={phone}
         register={register}
+        loading={loading}
+        error={error}
       />
     </div>
   );
 };
 
 const mapStateToProp = (state) => ({
-  user: state.user,
+  // user: state.user,
+  loading: state.user.loading.register,
+  error: state.user.error.register,
 });
 
 RegisterPage.propTypes = {
   register: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired,
+  // user: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProp, { register })(RegisterPage);

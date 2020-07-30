@@ -17,6 +17,7 @@
   width: 50%;
   -ms-flex-item-align: start;
       align-self: flex-start;
+  position: relative;
 }
 
 .layout-container .left .logo {
@@ -64,6 +65,7 @@
 
 .layout-container .left .form .btn-container {
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .layout-container .left .form .btn-container .button {
@@ -109,6 +111,22 @@
 
 .layout-container .left .form .form-check input[type='checkbox']:hover {
   cursor: pointer;
+}
+
+.layout-container .left .submit-error {
+  position: absolute;
+  bottom: 86px;
+  font-size: 0.9rem;
+  width: 100%;
+  text-align: left;
+  color: red;
+  font-weight: 600;
+  white-space: nowrap;
+  left: 0;
+}
+
+.layout-container .left .submit-error.register {
+  bottom: 47px;
 }
 
 .layout-container .right {

@@ -2,6 +2,7 @@ $place-holder: #e1e4e8;
 $pink: #bd10e0;
 .profile-page-container {
   padding-bottom: 30px;
+  position: relative;
 
   .header-container {
     width: 100%;
@@ -33,6 +34,7 @@ $pink: #bd10e0;
       // background-color: khaki;
       display: flex;
       align-items: center;
+      position: relative;
 
       .name {
         font-size: 32px;
@@ -107,12 +109,6 @@ $pink: #bd10e0;
         #phone {
           grid-area: phone;
         }
-
-        // .error {
-        //   position: absolute;
-        //   top: 0;
-        //   left: 0;
-        // }
       }
 
       .divide {
@@ -186,6 +182,51 @@ $pink: #bd10e0;
           color: white;
         }
       }
+    }
+  }
+
+  .error-message {
+    position: absolute;
+    font-size: 0.9rem;
+    width: 100%;
+    text-align: left;
+    color: red;
+    font-weight: 600;
+    white-space: nowrap;
+    left: 0;
+
+    &.upload-image {
+      left: 80px;
+      top: -8px;
+    }
+
+    &.update {
+      top: -35px;
+    }
+
+    &.change-password {
+      top: -35px;
+    }
+  }
+
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+    display: none;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &.show {
+      display: block;
     }
   }
 }

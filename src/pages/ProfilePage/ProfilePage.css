@@ -1,5 +1,6 @@
 .profile-page-container {
   padding-bottom: 30px;
+  position: relative;
 }
 
 .profile-page-container .header-container {
@@ -37,6 +38,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
 }
 
 .profile-page-container main .top .name {
@@ -188,5 +190,51 @@
 .profile-page-container main .btn-container .btn-logout:active {
   background-color: #bd10e0;
   color: white;
+}
+
+.profile-page-container .error-message {
+  position: absolute;
+  font-size: 0.9rem;
+  width: 100%;
+  text-align: left;
+  color: red;
+  font-weight: 600;
+  white-space: nowrap;
+  left: 0;
+}
+
+.profile-page-container .error-message.upload-image {
+  left: 80px;
+  top: -8px;
+}
+
+.profile-page-container .error-message.update {
+  top: -35px;
+}
+
+.profile-page-container .error-message.change-password {
+  top: -35px;
+}
+
+.profile-page-container .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.profile-page-container .overlay img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.profile-page-container .overlay.show {
+  display: block;
 }
 /*# sourceMappingURL=ProfilePage.css.map */
