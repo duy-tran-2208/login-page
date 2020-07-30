@@ -1,5 +1,7 @@
 $gray: #6b6c6f;
 $place-holder: #e1e4e8;
+$red: rgb(231, 0, 0);
+$red-hover: rgb(197, 2, 2);
 
 .input-wrapper {
   display: flex;
@@ -7,6 +9,7 @@ $place-holder: #e1e4e8;
   justify-content: center;
   position: relative;
   margin-bottom: 19px;
+  position: relative;
   // margin-bottom: 14px;
 
   label {
@@ -76,6 +79,108 @@ $place-holder: #e1e4e8;
     position: absolute;
     bottom: 3px;
     left: 46px;
+  }
+
+  .reveal {
+    position: absolute;
+    right: 13px;
+    bottom: 10px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .error-container {
+    position: absolute;
+    top: 34px;
+    right: -22px;
+
+    .error-msg {
+      position: absolute;
+      top: -25px;
+      font-size: 0.9rem;
+      right: 0;
+      // width: 100%;
+      white-space: nowrap;
+      background-color: $red;
+      padding: 0.1rem 0.5rem;
+      color: white;
+      border-radius: 4px;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s ease-in;
+      // opacity: 0;
+    }
+
+    .arrow-down {
+      width: 0;
+      height: 0;
+      top: -1px;
+      right: 5px;
+      position: absolute;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 4px solid $red;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s ease-in;
+    }
+
+    &.show {
+      .error-msg,
+      .arrow-down {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    &.display {
+      .error {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    .error {
+      width: 16px;
+      height: 16px;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.2s ease-in;
+
+      #sign {
+        fill: white;
+      }
+
+      #bg {
+        fill: $red;
+        transition: 0.1s ease-in;
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        #bg {
+          fill: $red-hover;
+        }
+      }
+
+      // &.on {
+
+      // }
+    }
+  }
+
+  .line {
+    width: 0px;
+    height: 3px;
+    background-color: black;
+    position: absolute;
+    left: 45px;
+    bottom: 5px;
+    border-radius: 10px;
+    transition: 0.1s ease-in;
   }
 }
 

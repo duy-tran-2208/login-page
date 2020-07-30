@@ -97,10 +97,11 @@
   -ms-grid-rows: auto;
       grid-template-rows: auto;
   grid-gap: 31px;
+  position: relative;
 }
 
 .profile-page-container main .content .first-form {
-      grid-template-areas: "name ." "phone email";
+      grid-template-areas: 'name .' 'phone email';
 }
 
 .profile-page-container main .content .first-form #full-name {
@@ -136,19 +137,19 @@
 
 .profile-page-container main .content .second-form {
   margin-top: 35px;
-      grid-template-areas: "current current" "new confirm";
+      grid-template-areas: 'current current' 'new confirm';
 }
 
 .profile-page-container main .content .second-form #current-pass {
-  grid-area: "current" !important;
+  grid-area: 'current' !important;
 }
 
 .profile-page-container main .content .second-form #new-pass {
-  grid-area: "new" !important;
+  grid-area: 'new' !important;
 }
 
 .profile-page-container main .content .second-form #confirm-pass {
-  grid-area: "confirm" !important;
+  grid-area: 'confirm' !important;
 }
 
 .profile-page-container main .btn-container {

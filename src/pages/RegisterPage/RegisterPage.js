@@ -1,113 +1,88 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import "./Register.css";
+import './Register.css';
 
-import AccountLayout from "../../layout/AccountLayout/AccountLayout";
-import axios from "axios";
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { register } from '../../actions/userAction';
+
+import AccountLayout from '../../layout/AccountLayout/AccountLayout';
+import axios from 'axios';
 
 const inputElements = [
   {
-    label: "Email",
-    placeholder: "Enter your mail",
-    icon: "letter",
-    fieldName: "mail",
+    label: 'Email',
+    placeholder: 'Enter your mail',
+    icon: 'letter',
+    fieldName: 'mail',
+    id: 'email',
   },
   {
-    label: "Password",
-    placeholder: "Enter your password",
-    icon: "key",
-    fieldName: "password",
+    label: 'Password',
+    placeholder: 'Enter your password',
+    icon: 'key',
+    fieldName: 'password',
+    id: 'new-pass',
   },
   {
-    label: "Confirm Password",
-    placeholder: "Enter your password",
-    icon: "key",
-    fieldName: "confirm",
+    label: 'Confirm Password',
+    placeholder: 'Enter your password',
+    icon: 'key',
+    fieldName: 'confirm',
+    id: 'confirm-pass',
   },
   {
-    label: "Full Name",
-    placeholder: "Enter your name",
-    icon: "letter",
-    fieldName: "name",
+    label: 'Full Name',
+    placeholder: 'Enter your name',
+    icon: 'letter',
+    fieldName: 'name',
+    id: 'full-name',
   },
   {
-    label: "Phone number",
-    placeholder: "Enter your phone number",
-    icon: "letter",
-    fieldName: "phone",
+    label: 'Phone number',
+    placeholder: 'Enter your phone number',
+    icon: 'letter',
+    fieldName: 'phone',
+    id: 'phone',
   },
 ];
 
-const RegisterPage = () => {
-  const [mail, setMail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirm, setConfirm] = useState("");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+const RegisterPage = (props) => {
+  const [mail, setMail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirm, setConfirm] = useState('');
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
 
-  // console.log(mail);
-  // console.log(password);
-  // console.log(confirm);
-  // console.log(name);
-  // console.log(phone);
-
-  const register = async (mail, password, name, phone) => {
-    try {
-      // const info = {
-      //   email: "rtest",
-      //   password: "123",
-      //   name: "RTest Name",
-      //   phone: "0123456789",
-      // };
-
-      const info = {
-        email: mail,
-        password,
-        name,
-        phone,
-      };
-
-      const res = await axios.post(
-        "http://api.terralogic.ngrok.io/api/register",
-        info
-      );
-
-      console.log(res);
-
-      localStorage.setItem("registerStatus", "success");
-    } catch (err) {
-      localStorage.setItem("registerStatus", "failed");
-      console.log(err);
-    }
-  };
+  const { register } = props; // register Action
 
   const onChange = (value, state) => {
     // console.log("CHANGE");
-    if (state === "mail") {
+    if (state === 'mail') {
       setMail(value);
     }
 
-    if (state === "password") {
+    if (state === 'password') {
       setPassword(value);
     }
 
-    if (state === "confirm") {
+    if (state === 'confirm') {
       setConfirm(value);
     }
 
-    if (state === "name") {
+    if (state === 'name') {
       setName(value);
     }
 
-    if (state === "phone") {
+    if (state === 'phone') {
       setPhone(value);
     }
   };
 
   return (
-    <div className="register-page-container">
+    <div className='register-page-container'>
       <AccountLayout
-        header="register"
+        header='register'
         inputElements={inputElements}
         hasRemember={false}
         onChange={onChange}
@@ -122,4 +97,15 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+const mapStateToProp = (state) => ({
+  user: state.user,
+});
+
+RegisterPage.propTypes = {
+  register: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProp, { register })(RegisterPage);
+
+// export default RegisterPage;

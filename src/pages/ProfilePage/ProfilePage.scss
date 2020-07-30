@@ -88,12 +88,13 @@ $pink: #bd10e0;
         grid-template-columns: repeat(2, 467px);
         grid-template-rows: auto;
         grid-gap: 31px;
+        position: relative;
       }
 
       .first-form {
         grid-template-areas:
-          "name ."
-          "phone email";
+          'name .'
+          'phone email';
 
         #full-name {
           grid-area: name;
@@ -106,6 +107,12 @@ $pink: #bd10e0;
         #phone {
           grid-area: phone;
         }
+
+        // .error {
+        //   position: absolute;
+        //   top: 0;
+        //   left: 0;
+        // }
       }
 
       .divide {
@@ -126,19 +133,19 @@ $pink: #bd10e0;
       .second-form {
         margin-top: 35px;
         grid-template-areas:
-          "current current"
-          "new confirm";
+          'current current'
+          'new confirm';
 
         #current-pass {
-          grid-area: "current" !important;
+          grid-area: 'current' !important;
         }
 
         #new-pass {
-          grid-area: "new" !important;
+          grid-area: 'new' !important;
         }
 
         #confirm-pass {
-          grid-area: "confirm" !important;
+          grid-area: 'confirm' !important;
         }
       }
     }

@@ -11,6 +11,7 @@
           justify-content: center;
   position: relative;
   margin-bottom: 19px;
+  position: relative;
 }
 
 .input-wrapper label {
@@ -84,6 +85,103 @@
   position: absolute;
   bottom: 3px;
   left: 46px;
+}
+
+.input-wrapper .reveal {
+  position: absolute;
+  right: 13px;
+  bottom: 10px;
+}
+
+.input-wrapper .reveal:hover {
+  cursor: pointer;
+}
+
+.input-wrapper .error-container {
+  position: absolute;
+  top: 34px;
+  right: -22px;
+}
+
+.input-wrapper .error-container .error-msg {
+  position: absolute;
+  top: -25px;
+  font-size: 0.9rem;
+  right: 0;
+  white-space: nowrap;
+  background-color: #e70000;
+  padding: 0.1rem 0.5rem;
+  color: white;
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.input-wrapper .error-container .arrow-down {
+  width: 0;
+  height: 0;
+  top: -1px;
+  right: 5px;
+  position: absolute;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #e70000;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.input-wrapper .error-container.show .error-msg,
+.input-wrapper .error-container.show .arrow-down {
+  visibility: visible;
+  opacity: 1;
+}
+
+.input-wrapper .error-container.display .error {
+  visibility: visible;
+  opacity: 1;
+}
+
+.input-wrapper .error-container .error {
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.input-wrapper .error-container .error #sign {
+  fill: white;
+}
+
+.input-wrapper .error-container .error #bg {
+  fill: #e70000;
+  -webkit-transition: 0.1s ease-in;
+  transition: 0.1s ease-in;
+}
+
+.input-wrapper .error-container .error:hover {
+  cursor: pointer;
+}
+
+.input-wrapper .error-container .error:hover #bg {
+  fill: #c50202;
+}
+
+.input-wrapper .line {
+  width: 0px;
+  height: 3px;
+  background-color: black;
+  position: absolute;
+  left: 45px;
+  bottom: 5px;
+  border-radius: 10px;
+  -webkit-transition: 0.1s ease-in;
+  transition: 0.1s ease-in;
 }
 
 @-webkit-keyframes Animation {

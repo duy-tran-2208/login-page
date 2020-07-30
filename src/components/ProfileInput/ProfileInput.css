@@ -12,10 +12,6 @@
   cursor: pointer;
 }
 
-.profile-input-container .reveal:hover svg path {
-  fill: #520761;
-}
-
 .profile-input-container .reveal svg {
   width: 27px;
   height: 18px;
@@ -59,5 +55,91 @@
 
 .profile-input-container .input::placeholder {
   color: #e1e4e8;
+}
+
+.profile-input-container .error-container {
+  position: absolute;
+  top: 17px;
+  right: 6px;
+}
+
+.profile-input-container .error-container .error-msg {
+  position: absolute;
+  top: -29px;
+  right: 0;
+  white-space: nowrap;
+  background-color: #e70000;
+  padding: 0.1rem 0.5rem;
+  color: white;
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.profile-input-container .error-container .arrow-down {
+  width: 0;
+  height: 0;
+  top: -2px;
+  right: 5px;
+  position: absolute;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #e70000;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.profile-input-container .error-container.show .error-msg,
+.profile-input-container .error-container.show .arrow-down {
+  visibility: visible;
+  opacity: 1;
+}
+
+.profile-input-container .error-container.display .error {
+  visibility: visible;
+  opacity: 1;
+}
+
+.profile-input-container .error-container .error {
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.profile-input-container .error-container .error #sign {
+  fill: white;
+}
+
+.profile-input-container .error-container .error #bg {
+  fill: #e70000;
+  -webkit-transition: 0.1s ease-in;
+  transition: 0.1s ease-in;
+}
+
+.profile-input-container .error-container .error:hover {
+  cursor: pointer;
+}
+
+.profile-input-container .error-container .error:hover #bg {
+  fill: #c50202;
+}
+
+.profile-input-container .line {
+  width: 0px;
+  height: 5px;
+  background-color: black;
+  position: absolute;
+  left: 13px;
+  bottom: 5px;
+  border-radius: 10px;
+  -webkit-transition: 0.1s ease-in;
+  transition: 0.1s ease-in;
 }
 /*# sourceMappingURL=ProfileInput.css.map */

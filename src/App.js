@@ -1,29 +1,32 @@
-import React from "react";
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
-} from "react-router-dom";
+} from 'react-router-dom';
 
-import "./App.css";
+import { Provider } from 'react-redux';
+import store from './store';
 
-import LoginPage from "./pages/LoginPage/LoginPage";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import './App.css';
+
+import LoginPage from './pages/LoginPage/LoginPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 
 const checkAuth = () => {
   // console.log("CHECK AUTH");
-  const status = localStorage.getItem("loginStatus");
+  const status = localStorage.getItem('loginStatus');
   // console.log(status);
 
   if (!status) {
-    console.log("FAIL");
+    console.log('FAIL');
     return false;
   }
 
-  if (status === "success") {
-    console.log("SUCCESS");
+  if (status === 'success') {
+    console.log('SUCCESS');
     // <Redirect to={{ pathname: "/profile" }} />;
     return true;
   }
@@ -39,7 +42,7 @@ const AuthRoute = ({ component: Component, ...rest }) => (
       checkAuth() ? (
         <Component {...props} />
       ) : (
-        <Redirect to={{ pathname: "/login" }} />
+        <Redirect to={{ pathname: '/login' }} />
       )
     }
   />
@@ -47,20 +50,22 @@ const AuthRoute = ({ component: Component, ...rest }) => (
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Switch>
-          <Route
-            path="/login"
-            component={() => <LoginPage checkAuth={checkAuth} />}
-          />
-          <Route path="/register" component={RegisterPage} />
-          <AuthRoute exact path="/profile" component={ProfilePage} />
-          {/* <Route path="/profile" component={ProfilePage} /> */}
-          <Route path="/" component={LoginPage} />
-        </Switch>
-      </div>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <div className='App'>
+          <Switch>
+            <Route
+              path='/login'
+              component={() => <LoginPage checkAuth={checkAuth} />}
+            />
+            <Route path='/register' component={RegisterPage} />
+            <AuthRoute exact path='/profile' component={ProfilePage} />
+            {/* <Route path="/profile" component={ProfilePage} /> */}
+            <Route path='/' component={LoginPage} />
+          </Switch>
+        </div>
+      </Router>
+    </Provider>
   );
 }
 

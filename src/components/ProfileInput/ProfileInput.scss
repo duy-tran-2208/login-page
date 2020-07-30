@@ -1,6 +1,8 @@
 $place-holder: #e1e4e8;
 $pink: #bd10e0;
 $pink-hover: #520761;
+$red: rgb(231, 0, 0);
+$red-hover: rgb(197, 2, 2);
 
 .profile-input-container {
   position: relative;
@@ -15,14 +17,6 @@ $pink-hover: #520761;
 
     &:hover {
       cursor: pointer;
-      // background-color: $pink-hover;
-      // fill: $pink-hover;
-
-      svg {
-        path {
-          fill: $pink-hover;
-        }
-      }
     }
 
     svg {
@@ -59,15 +53,100 @@ $pink-hover: #520761;
     font-size: 18px;
     font-weight: 600;
     color: #212020;
-    // margin-bottom: 20px;
-    //   outline: none !important;
-
-    &:focus {
-      // outline: none !important;
-    }
 
     &::placeholder {
       color: $place-holder;
     }
+  }
+
+  .error-container {
+    position: absolute;
+    top: 17px;
+    right: 6px;
+
+    .error-msg {
+      position: absolute;
+      top: -29px;
+      right: 0;
+      // width: 100%;
+      white-space: nowrap;
+      background-color: $red;
+      padding: 0.1rem 0.5rem;
+      color: white;
+      border-radius: 4px;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s ease-in;
+      // opacity: 0;
+    }
+
+    .arrow-down {
+      width: 0;
+      height: 0;
+      top: -2px;
+      right: 5px;
+      position: absolute;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 4px solid $red;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s ease-in;
+    }
+
+    &.show {
+      .error-msg,
+      .arrow-down {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    &.display {
+      .error {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    .error {
+      width: 20px;
+      height: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.2s ease-in;
+
+      #sign {
+        fill: white;
+      }
+
+      #bg {
+        fill: $red;
+        transition: 0.1s ease-in;
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        #bg {
+          fill: $red-hover;
+        }
+      }
+
+      // &.on {
+
+      // }
+    }
+  }
+
+  .line {
+    width: 0px;
+    height: 5px;
+    background-color: black;
+    position: absolute;
+    left: 13px;
+    bottom: 5px;
+    border-radius: 10px;
+    transition: 0.1s ease-in;
   }
 }
