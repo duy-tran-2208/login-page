@@ -181,7 +181,7 @@
   border: 1px solid #bd10e0;
 }
 
-.profile-page-container main .btn-container .btn-save:active {
+.profile-page-container main .btn-container .btn-save:active, .profile-page-container main .btn-container .btn-save:hover {
   background-color: white;
   color: #bd10e0;
 }
@@ -193,7 +193,7 @@
   color: #bd10e0;
 }
 
-.profile-page-container main .btn-container .btn-logout:active {
+.profile-page-container main .btn-container .btn-logout:active, .profile-page-container main .btn-container .btn-logout:hover {
   background-color: #bd10e0;
   color: white;
 }

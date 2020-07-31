@@ -171,11 +171,9 @@ const Input = (props) => {
             xmlns='http://www.w3.org/2000/svg'
             xlink='http://www.w3.org/1999/xlink'
             onMouseEnter={(e) => {
-              console.log(e.target);
               e.target.classList.add('hover');
             }}
             onMouseLeave={(e) => {
-              console.log(e.target);
               e.target.classList.remove('hover');
             }}
           >

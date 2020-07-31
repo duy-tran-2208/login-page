@@ -164,7 +164,8 @@ $pink: #bd10e0;
         background-color: $pink;
         border: 1px solid $pink;
 
-        &:active {
+        &:active,
+        &:hover {
           background-color: white;
           color: $pink;
         }
@@ -176,7 +177,8 @@ $pink: #bd10e0;
         border: 1px solid $pink;
         color: $pink;
 
-        &:active {
+        &:active,
+        &:hover {
           background-color: $pink;
           color: white;
         }
