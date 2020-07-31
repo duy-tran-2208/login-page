@@ -40,7 +40,6 @@ const login = ({ mail, password, history }) => {
         bodyInfo
       );
 
-      console.log(res);
       const { msg, token } = res.data;
       data = res.data;
 
@@ -51,7 +50,6 @@ const login = ({ mail, password, history }) => {
         const tokenData = localStorage.getItem('token');
 
         const info = jwt.decode(tokenData);
-        console.log(info);
 
         dispatch({
           type: LOGIN_SUCCESS,
@@ -61,15 +59,10 @@ const login = ({ mail, password, history }) => {
         history.push('/profile');
       }
     } catch (error) {
-      // localStorage.setItem('loginStatus', 'failed');
-      console.log(data);
-      console.log(error);
-
       dispatch({
         type: LOGIN_FAIL,
         payload: error.toString(),
       });
-      // history.push('/login');
     }
   };
 };
@@ -107,15 +100,12 @@ const register = ({ mail, password, name, phone }) => {
 
 const update = ({ mail, name, phone, avatar }) => {
   return async (dispatch) => {
-    console.log('UPDATE()');
     const bodyInfo = {
       email: mail,
       name,
       phone,
       avatar,
     };
-
-    console.log(bodyInfo);
 
     const token = localStorage.getItem('token');
 
@@ -132,12 +122,9 @@ const update = ({ mail, name, phone, avatar }) => {
         }
       );
 
-      console.log('UPDATE SUCCESS');
       const info = res.data.data;
-      console.log(res.data);
       dispatch({ type: UPDATE_SUCCESS, payload: info });
     } catch (err) {
-      console.log('UPDATE FAIL');
       console.log(err);
       dispatch({ type: UPDATE_FAIL, payload: err.toString() });
     }
@@ -166,7 +153,6 @@ const changePassword = ({ password, currentPassword }) => {
         }
       );
 
-      console.log(res.data);
       const { msg } = res.data;
       if (msg === CHANGE_PASS_SUCCESS_MESSAGE) {
         const info = res.data.data;
