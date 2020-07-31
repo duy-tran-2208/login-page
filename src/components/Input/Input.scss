@@ -1,5 +1,5 @@
 $gray: #6b6c6f;
-$place-holder: #e1e4e8;
+$light-gray: #e1e4e8;
 $red: rgb(231, 0, 0);
 $red-hover: rgb(197, 2, 2);
 
@@ -10,7 +10,6 @@ $red-hover: rgb(197, 2, 2);
   position: relative;
   margin-bottom: 19px;
   position: relative;
-  // margin-bottom: 14px;
 
   label {
     color: $gray;
@@ -22,13 +21,10 @@ $red-hover: rgb(197, 2, 2);
   .input {
     width: 350px;
     height: 40px;
-    // width: 330px;
-    // height: 36px;
     border-radius: 20px;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.05);
     border: solid 1px #dfe2e6;
     border-color: black;
-    //   background-color: #ffffff;
     line-height: 50px;
     font-size: 14px;
     padding-top: 5px;
@@ -39,9 +35,7 @@ $red-hover: rgb(197, 2, 2);
     outline: none;
 
     &::placeholder {
-      // vertical-align: middle;
-      color: $place-holder;
-      color: black;
+      color: $light-gray;
     }
 
     &:focus {
@@ -54,10 +48,9 @@ $red-hover: rgb(197, 2, 2);
     bottom: 10px;
     right: 90%;
     transition: transform 0.3s ease-in;
-    // transition: right 0.25s ease-in;
 
     svg {
-      // transition: 0.2s ease-in;
+      fill: $light-gray;
     }
   }
 
@@ -67,13 +60,12 @@ $red-hover: rgb(197, 2, 2);
   }
 
   .bigger {
-    // transform: rotateY(360deg) scale(1.5);
-    // animation: Animation 0.3s;
-    // animation-timing-function: ease-in;
+    transform: rotateY(360deg) scale(1.5);
+    animation: Animation 0.3s;
+    animation-timing-function: ease-in;
   }
 
   .line {
-    // width: 6px;
     height: 3px;
     background-color: rgb(0, 190, 0);
     position: absolute;
@@ -85,6 +77,19 @@ $red-hover: rgb(197, 2, 2);
     position: absolute;
     right: 13px;
     bottom: 10px;
+
+    svg {
+      width: 27px;
+      height: 18px;
+      path {
+        fill: #dfe2e6;
+        transition: 0.2s ease-in;
+      }
+
+      &.hover path {
+        fill: black;
+      }
+    }
 
     &:hover {
       cursor: pointer;
@@ -101,7 +106,6 @@ $red-hover: rgb(197, 2, 2);
       top: -25px;
       font-size: 0.9rem;
       right: 0;
-      // width: 100%;
       white-space: nowrap;
       background-color: $red;
       padding: 0.1rem 0.5rem;
@@ -110,7 +114,6 @@ $red-hover: rgb(197, 2, 2);
       visibility: hidden;
       opacity: 0;
       transition: 0.2s ease-in;
-      // opacity: 0;
     }
 
     .arrow-down {
@@ -165,10 +168,6 @@ $red-hover: rgb(197, 2, 2);
           fill: $red-hover;
         }
       }
-
-      // &.on {
-
-      // }
     }
   }
 
@@ -185,13 +184,6 @@ $red-hover: rgb(197, 2, 2);
 }
 
 @keyframes Animation {
-  // 0% {
-  //   right: 90%;
-  // }
-
-  // 100% {
-  //   right: 5%;
-  // }
   0% {
     transform: scale(1);
   }

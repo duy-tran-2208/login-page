@@ -99,10 +99,6 @@ const AccountLayout = (props) => {
   const { login, register, history } = props;
   const { loading, error } = props;
 
-  console.log(error);
-
-  // console.log(loading);
-
   let overlayRef = null;
 
   useEffect(() => {
@@ -120,71 +116,71 @@ const AccountLayout = (props) => {
   const LoginPageBtn = () => (
     <div className='btn-container'>
       <Link to='/register'>
-        <button type='button' className='button btn btn-primary btn-register'>
-          Register
-        </button>
+        <div className='btn-wrapper'>
+          <button type='button' className='button btn btn-primary btn-register'>
+            Register
+          </button>
+          <div className='bg bg-1'></div>
+        </div>
       </Link>
 
-      <button
-        type='button'
-        className='button btn btn-primary btn-login'
-        // onClick={() => {
-        //   login({ mail, password, history });
-        // }}
-        onClick={() => {
-          if (
-            //   validMail(mail)
-            //  && validPassword(password)
-            true
-          ) {
-            console.log('OK TO LOGIN');
-            login({ mail, password, history });
-          } else {
-            console.log('INVALID TO LOGIN');
-          }
-        }}
-      >
-        Login
-      </button>
+      <div className='btn-wrapper'>
+        <button
+          type='button'
+          className='button btn btn-primary btn-login'
+          onClick={() => {
+            if (validMail(mail) && validPassword(password)) {
+              login({ mail, password, history });
+            } else {
+              console.log('INVALID TO LOGIN');
+            }
+          }}
+        >
+          Login
+        </button>
+        <div className='bg bg-2'></div>
+      </div>
     </div>
   );
 
   const RegisterPageBtn = () => (
     <div className='btn-container'>
       <Link to='/login'>
-        <button type='button' className='button btn btn-primary btn-register'>
-          Back
-        </button>
+        <div className='btn-wrapper'>
+          <button type='button' className='button btn btn-primary btn-register'>
+            Back
+          </button>
+          <div className='bg bg-1'></div>
+        </div>
       </Link>
 
-      <button
-        type='button'
-        className='button btn btn-primary btn-login'
-        // onClick={() => register({ mail, password, name, phone })}
-        onClick={() => {
-          if (
-            // validMail(mail) &&
-            // validPassword(password) &&
-            // validConfirm(password, confirm) &&
-            // validName(name) &&
-            // validPhone(phone)
-            true
-          ) {
-            console.log('OK TO REGISTER');
-            register({ mail, password, name, phone });
-          } else {
-            console.log('INVALID TO REGISTER');
-          }
-        }}
-      >
-        Submit
-      </button>
+      <div className='btn-wrapper'>
+        <button
+          type='button'
+          className='button btn btn-primary btn-login'
+          onClick={() => {
+            if (
+              validMail(mail) &&
+              validPassword(password) &&
+              validConfirm(password, confirm) &&
+              validName(name) &&
+              validPhone(phone)
+            ) {
+              console.log('OK TO REGISTER');
+              register({ mail, password, name, phone });
+            } else {
+              console.log('INVALID TO REGISTER');
+            }
+          }}
+        >
+          Submit
+        </button>
+        <div className='bg bg-2'></div>
+      </div>
     </div>
   );
 
   const RememberElement = () => {
-    const [check, setCheck] = useState(true);
-
     return (
       <div className='form-check'>
         <input className='form-check-input' type='checkbox' id='checkbox1' />

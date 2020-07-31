@@ -86,7 +86,6 @@ $pink: #bd10e0;
 
       .form {
         display: grid;
-        // grid-template-columns: 1fr 1fr;
         grid-template-columns: repeat(2, 467px);
         grid-template-rows: auto;
         grid-gap: 31px;
@@ -129,19 +128,19 @@ $pink: #bd10e0;
       .second-form {
         margin-top: 35px;
         grid-template-areas:
-          'current current'
+          'current .'
           'new confirm';
 
         #current-pass {
-          grid-area: 'current' !important;
+          grid-area: current;
         }
 
         #new-pass {
-          grid-area: 'new' !important;
+          grid-area: new;
         }
 
         #confirm-pass {
-          grid-area: 'confirm' !important;
+          grid-area: confirm;
         }
       }
     }
@@ -227,6 +226,28 @@ $pink: #bd10e0;
 
     &.show {
       display: block;
+    }
+  }
+}
+
+@media (max-width: 950px) {
+  .profile-page-container {
+    .form {
+      grid-template-columns: 467px !important;
+
+      &.first-form {
+        grid-template-areas:
+          'name'
+          'phone'
+          'email' !important;
+      }
+
+      &.second-form {
+        grid-template-areas:
+          'current'
+          'new'
+          'confirm' !important;
+      }
     }
   }
 }

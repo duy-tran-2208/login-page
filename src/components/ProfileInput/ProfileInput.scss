@@ -11,9 +11,6 @@ $red-hover: rgb(197, 2, 2);
     position: absolute;
     top: 18px;
     right: 30px;
-    // width: 25px;
-    // height: 25px;
-    // background-color: $pink;
 
     &:hover {
       cursor: pointer;
@@ -25,13 +22,6 @@ $red-hover: rgb(197, 2, 2);
       path {
         fill: $pink;
       }
-
-      // &:hover {
-      //   cursor: pointer;
-      //   path {
-      //     fill: $pink-hover;
-      //   }
-      // }
     }
   }
 
@@ -68,7 +58,6 @@ $red-hover: rgb(197, 2, 2);
       position: absolute;
       top: -29px;
       right: 0;
-      // width: 100%;
       white-space: nowrap;
       background-color: $red;
       padding: 0.1rem 0.5rem;
@@ -77,7 +66,6 @@ $red-hover: rgb(197, 2, 2);
       visibility: hidden;
       opacity: 0;
       transition: 0.2s ease-in;
-      // opacity: 0;
     }
 
     .arrow-down {
@@ -132,10 +120,6 @@ $red-hover: rgb(197, 2, 2);
           fill: $red-hover;
         }
       }
-
-      // &.on {
-
-      // }
     }
   }
 

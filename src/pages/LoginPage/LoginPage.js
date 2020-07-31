@@ -42,12 +42,7 @@ const LoginPage = (props) => {
 
   const { checkAuth } = props;
 
-  let loginSuccess = 'unknown';
-
   useEffect(() => {
-    // setRemember();
-    console.log('USE EFFECT');
-    // localStorage.setItem('loginStatus', 'failed');
     localStorage.removeItem('token');
   }, []);
 
@@ -70,7 +65,6 @@ const LoginPage = (props) => {
         mail={mail}
         password={password}
         login={login}
-        loginSuccess={loginSuccess}
         loading={loading}
         error={error}
       />
@@ -79,14 +73,12 @@ const LoginPage = (props) => {
 };
 
 const mapStateToProp = (state) => ({
-  // user: state.user,
   loading: state.user.loading.login,
   error: state.user.error.login,
 });
 
 LoginPage.propTypes = {
   login: PropTypes.func.isRequired,
-  // user: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
 };

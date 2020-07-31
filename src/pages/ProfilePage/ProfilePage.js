@@ -78,8 +78,6 @@ const PencilSvg = (props) => {
   );
 };
 
-const PASS_FAIL = 'Password not match.';
-
 const ProfilePage = (props) => {
   const { user } = props;
   const { loading, error } = props;
@@ -111,9 +109,6 @@ const ProfilePage = (props) => {
     const validateName = validName(fullName);
     const validateMail = validMail(mail);
     const validatePhone = validPhone(phone);
-    console.log(validateMail);
-    console.log(validatePhone);
-    console.log(validateName);
 
     if (validateName && validateMail && validatePhone) {
       if (pass === '' && newPass === '' && confirmPass === '') {
@@ -249,10 +244,6 @@ const ProfilePage = (props) => {
             onChange={(e) => fileSelectedHandler(e)}
           />
 
-          {/* <button id='upload-btn' onClick={() => fileUploadHandler()}>
-            Upload
-          </button> */}
-
           <form className='form first-form'>
             <ProfileInput
               label='Full name'
@@ -293,7 +284,6 @@ const ProfilePage = (props) => {
               setInputFieldVaid={setInputFieldVaid}
             />
 
-            {/* <div className={`${submitErrorClass()}`}> */}
             <div className='error-message update'>
               <p>{error.update}</p>
             </div>
@@ -356,7 +346,6 @@ const ProfilePage = (props) => {
             className='button btn btn-primary btn-save'
             onClick={() => {
               const isValid = validSubmit();
-              console.log(isValid);
               if (isValid) {
                 save();
               }

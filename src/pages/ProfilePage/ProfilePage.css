@@ -139,19 +139,25 @@
 
 .profile-page-container main .content .second-form {
   margin-top: 35px;
-      grid-template-areas: 'current current' 'new confirm';
+      grid-template-areas: 'current .' 'new confirm';
 }
 
 .profile-page-container main .content .second-form #current-pass {
-  grid-area: 'current' !important;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: current;
 }
 
 .profile-page-container main .content .second-form #new-pass {
-  grid-area: 'new' !important;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: new;
 }
 
 .profile-page-container main .content .second-form #confirm-pass {
-  grid-area: 'confirm' !important;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: confirm;
 }
 
 .profile-page-container main .btn-container {
@@ -236,5 +242,18 @@
 
 .profile-page-container .overlay.show {
   display: block;
+}
+
+@media (max-width: 950px) {
+  .profile-page-container .form {
+    -ms-grid-columns: 467px !important;
+        grid-template-columns: 467px !important;
+  }
+  .profile-page-container .form.first-form {
+        grid-template-areas: 'name' 'phone' 'email' !important;
+  }
+  .profile-page-container .form.second-form {
+        grid-template-areas: 'current' 'new' 'confirm' !important;
+  }
 }
 /*# sourceMappingURL=ProfilePage.css.map */

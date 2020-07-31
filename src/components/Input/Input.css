@@ -40,22 +40,18 @@
 
 .input-wrapper .input::-webkit-input-placeholder {
   color: #e1e4e8;
-  color: black;
 }
 
 .input-wrapper .input:-ms-input-placeholder {
   color: #e1e4e8;
-  color: black;
 }
 
 .input-wrapper .input::-ms-input-placeholder {
   color: #e1e4e8;
-  color: black;
 }
 
 .input-wrapper .input::placeholder {
   color: #e1e4e8;
-  color: black;
 }
 
 .input-wrapper .input:focus {
@@ -72,11 +68,24 @@
   transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in;
 }
 
+.input-wrapper .icon svg {
+  fill: #e1e4e8;
+}
+
 .input-wrapper .animate {
   -webkit-animation: Animation;
           animation: Animation;
   -webkit-animation-duration: 1s;
           animation-duration: 1s;
+}
+
+.input-wrapper .bigger {
+  -webkit-transform: rotateY(360deg) scale(1.5);
+          transform: rotateY(360deg) scale(1.5);
+  -webkit-animation: Animation 0.3s;
+          animation: Animation 0.3s;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
 }
 
 .input-wrapper .line {
@@ -91,6 +100,21 @@
   position: absolute;
   right: 13px;
   bottom: 10px;
+}
+
+.input-wrapper .reveal svg {
+  width: 27px;
+  height: 18px;
+}
+
+.input-wrapper .reveal svg path {
+  fill: #dfe2e6;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.input-wrapper .reveal svg.hover path {
+  fill: black;
 }
 
 .input-wrapper .reveal:hover {
