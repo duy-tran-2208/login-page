@@ -113,10 +113,8 @@ const ProfilePage = (props) => {
     if (validateName && validateMail && validatePhone) {
       if (pass === '' && newPass === '' && confirmPass === '') {
         // If user doesn't choose to change password
-        console.log('OK');
         return true;
       }
-      console.log('CHECK PASS');
       return (
         validPassword(pass) &&
         validPassword(newPass) &&
