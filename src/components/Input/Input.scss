@@ -24,7 +24,6 @@ $red-hover: rgb(197, 2, 2);
     border-radius: 20px;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.05);
     border: solid 1px #dfe2e6;
-    border-color: black;
     line-height: 50px;
     font-size: 14px;
     padding-top: 5px;
@@ -33,6 +32,7 @@ $red-hover: rgb(197, 2, 2);
     font-weight: 600;
     color: black;
     outline: none;
+    transition: 0.2s ease-in;
 
     &::placeholder {
       color: $light-gray;
@@ -40,6 +40,7 @@ $red-hover: rgb(197, 2, 2);
 
     &:focus {
       outline: none;
+      border-color: black;
     }
   }
 
