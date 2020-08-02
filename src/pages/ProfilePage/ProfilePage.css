@@ -125,8 +125,8 @@
 }
 
 .profile-page-container main .content .divide {
-  margin: 23px 0;
-  width: 971px;
+  margin: 23px auto;
+  width: 95%;
   height: 2px;
   opacity: 0.4;
   background-color: #bfc2d3;

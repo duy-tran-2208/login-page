@@ -111,12 +111,12 @@ $pink: #bd10e0;
       }
 
       .divide {
-        margin: 23px 0;
-        width: 971px;
+        margin: 23px auto;
+        // width: 971px;
+        width: 95%;
         height: 2px;
         opacity: 0.4;
         background-color: #bfc2d3;
-        // background-color: black;
       }
 
       .change-pass {
