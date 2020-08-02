@@ -60,6 +60,14 @@
 }
 
 .profile-input-container .input:focus {
+  outline: none;
+}
+
+.profile-input-container input[value=''] {
+  border-color: #dfe2e6;
+}
+
+.profile-input-container input[value]:not([value='']) {
   border-color: black;
 }
 

@@ -50,8 +50,16 @@ $red-hover: rgb(197, 2, 2);
     }
 
     &:focus {
-      border-color: black;
+      outline: none;
     }
+  }
+
+  input[value=''] {
+    border-color: #dfe2e6;
+  }
+
+  input[value]:not([value='']) {
+    border-color: black;
   }
 
   .error-container {
