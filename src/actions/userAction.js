@@ -51,13 +51,11 @@ const login = ({ mail, password, history }) => {
 
         const info = jwt.decode(tokenData);
 
-        console.log('DISPATCH HERE');
         dispatch({
           type: LOGIN_SUCCESS,
           payload: info,
         });
 
-        console.log('HISTORY HERE');
         history.push('/profile');
       }
     } catch (error) {

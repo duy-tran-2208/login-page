@@ -40,8 +40,6 @@ const LoginPage = (props) => {
   const [mail, setMail] = useState('');
   const [password, setPassword] = useState('');
 
-  // const { checkAuth } = props;
-
   useEffect(() => {
     localStorage.removeItem('token');
   }, []);

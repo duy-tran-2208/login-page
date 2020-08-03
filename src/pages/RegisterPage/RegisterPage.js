@@ -59,7 +59,6 @@ const RegisterPage = (props) => {
   const { loading, error } = props; // states from Redux Store
 
   const onChange = (value, state) => {
-    // console.log("CHANGE");
     if (state === 'mail') {
       setMail(value);
     }

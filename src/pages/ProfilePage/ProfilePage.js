@@ -141,7 +141,6 @@ const ProfilePage = (props) => {
   const fileSelectedHandler = async (e) => {
     const selectedImg = e.target.files[0];
     if (!selectedImg) {
-      console.log('Nothing is selected');
       return;
     }
     await setSelectedFile(selectedImg);
@@ -149,9 +148,8 @@ const ProfilePage = (props) => {
 
   const fileUploadHandler = async () => {
     const formData = new FormData();
-    console.log(selectedFile);
     formData.append('image', selectedFile, selectedFile.name);
-    console.log(...formData);
+    // console.log(...formData);
     await uploadFile({ formData });
   };
 
@@ -177,8 +175,6 @@ const ProfilePage = (props) => {
   }, [selectedFile]);
 
   useEffect(() => {
-    console.log('useEffect');
-
     // Check if user from redux store has data
     if (user.email) {
       const { name, email, phone, avatar } = user;
@@ -191,12 +187,9 @@ const ProfilePage = (props) => {
     }
     // Redux store has empty data when refreshing the page
     else {
-      console.log(token);
       const localData = jwt.decode(token);
 
       if (localData) {
-        console.log(localData);
-        console.log(localData);
         const { email, name, phone, avatar } = localData;
         setFullName(name);
         setMail(email);

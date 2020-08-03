@@ -132,7 +132,7 @@ const AccountLayout = (props) => {
             if (validMail(mail) && validPassword(password)) {
               login({ mail, password, history });
             } else {
-              console.log('INVALID TO LOGIN');
+              // console.log('INVALID TO LOGIN');
             }
           }}
         >
@@ -166,10 +166,10 @@ const AccountLayout = (props) => {
               validName(name) &&
               validPhone(phone)
             ) {
-              console.log('OK TO REGISTER');
+              // console.log('OK TO REGISTER');
               register({ mail, password, name, phone });
             } else {
-              console.log('INVALID TO REGISTER');
+              // console.log('INVALID TO REGISTER');
             }
           }}
         >
