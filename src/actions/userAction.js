@@ -45,20 +45,24 @@ const login = ({ mail, password, history }) => {
 
       if (msg === LOGIN_SUCCESS_MESSAGE) {
         localStorage.setItem('token', token);
-        // localStorage.setItem('loginStatus', 'success');
+        localStorage.setItem('loginStatus', 'success');
 
         const tokenData = localStorage.getItem('token');
 
         const info = jwt.decode(tokenData);
 
+        console.log('DISPATCH HERE');
         dispatch({
           type: LOGIN_SUCCESS,
           payload: info,
         });
 
+        console.log('HISTORY HERE');
         history.push('/profile');
       }
     } catch (error) {
+      localStorage.setItem('loginStatus', 'FAIL');
+
       dispatch({
         type: LOGIN_FAIL,
         payload: error.toString(),

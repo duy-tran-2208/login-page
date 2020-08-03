@@ -16,9 +16,8 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 
 const checkAuth = () => {
-  // console.log("CHECK AUTH");
   const status = localStorage.getItem('loginStatus');
-  // console.log(status);
+  // const status = localStorage.getItem('token');
 
   if (!status) {
     console.log('FAIL');
@@ -27,7 +26,7 @@ const checkAuth = () => {
 
   if (status === 'success') {
     console.log('SUCCESS');
-    // <Redirect to={{ pathname: "/profile" }} />;
+    // <Redirect to={{ pathname: '/profile' }} />;
     return true;
   }
 
