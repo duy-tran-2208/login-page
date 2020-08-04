@@ -1,0 +1,12 @@
+.not-found-page-container {
+  width: 100vw;
+  height: 100vh;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.not-found-page-container h1 {
+  margin-bottom: 1rem;
+}
+/*# sourceMappingURL=NotFoundPage.css.map */

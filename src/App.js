@@ -14,10 +14,10 @@ import './App.css';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 const checkAuth = () => {
   const status = localStorage.getItem('loginStatus');
-  // const status = localStorage.getItem('token');
 
   if (!status) {
     console.log('FAIL');
@@ -26,12 +26,10 @@ const checkAuth = () => {
 
   if (status === 'success') {
     console.log('SUCCESS');
-    // <Redirect to={{ pathname: '/profile' }} />;
     return true;
   }
 
   return false;
-  // return true;
 };
 
 const AuthRoute = ({ component: Component, ...rest }) => (
@@ -54,13 +52,14 @@ function App() {
         <div className='App'>
           <Switch>
             <Route
+              exact
               path='/login'
               component={() => <LoginPage checkAuth={checkAuth} />}
             />
-            <Route path='/register' component={RegisterPage} />
+            <Route exact path='/register' component={RegisterPage} />
             <AuthRoute exact path='/profile' component={ProfilePage} />
             {/* <Route path="/profile" component={ProfilePage} /> */}
-            <Route path='/' component={LoginPage} />
+            <Route path='/' component={NotFoundPage} />
           </Switch>
         </div>
       </Router>
