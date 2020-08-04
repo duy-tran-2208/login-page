@@ -184,7 +184,7 @@ const AccountLayout = (props) => {
     return (
       <div className='form-check'>
         <input className='form-check-input' type='checkbox' id='checkbox1' />
-        <label className='form-check-label' htmlor='checkbox1'>
+        <label className='form-check-label' htmlFor='checkbox1'>
           Remember password
         </label>
       </div>
