@@ -94,10 +94,30 @@ const HeaderText = ({ kind }) => {
 };
 
 const AccountLayout = (props) => {
-  const { header, inputElements, hasRemember, onChange } = props;
+  const {
+    header = 'login',
+    inputElements = [
+      {
+        label: 'Email',
+        placeholder: 'Enter your mail',
+        icon: 'key',
+        fieldName: 'mail',
+        id: 'email',
+      },
+      {
+        label: 'Password',
+        placeholder: 'Enter your password',
+        icon: 'letter',
+        fieldName: 'password',
+        id: 'current-pass',
+      },
+    ],
+    hasRemember = false,
+    onChange,
+  } = props;
   const { mail, password, confirm, name, phone } = props;
   const { login, register, history } = props;
-  const { loading, error } = props;
+  const { loading = false, error = '' } = props;
 
   const [remember, setRemember] = useState(false);
 

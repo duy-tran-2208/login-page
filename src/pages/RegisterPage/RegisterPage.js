@@ -54,9 +54,9 @@ const RegisterPage = (props) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
-  const { register } = props; // register Action
+  const { register = () => {} } = props; // register Action
 
-  const { loading, error } = props; // states from Redux Store
+  const { loading = false, error = '' } = props; // states from Redux Store
 
   const onChange = (value, state) => {
     if (state === 'mail') {

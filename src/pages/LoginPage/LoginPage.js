@@ -28,7 +28,7 @@ const inputElements = [
 
 const LoginPage = (props) => {
   const { login } = props; // login Action
-  const { loading, error } = props; // states from Redux Store
+  const { loading = false, error = '' } = props; // states from Redux Store
 
   const [mail, setMail] = useState('');
   const [password, setPassword] = useState('');
