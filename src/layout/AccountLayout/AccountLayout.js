@@ -102,6 +102,11 @@ const AccountLayout = (props) => {
   let overlayRef = null;
 
   useEffect(() => {
+    // const previousLink = history.location.pathname;
+    // localStorage.setItem('history', previousLink);
+  }, []);
+
+  useEffect(() => {
     displaySpinner();
   }, [loading]);
 
@@ -167,7 +172,7 @@ const AccountLayout = (props) => {
               validPhone(phone)
             ) {
               // console.log('OK TO REGISTER');
-              register({ mail, password, name, phone });
+              register({ mail, password, name, phone, history });
             } else {
               // console.log('INVALID TO REGISTER');
             }

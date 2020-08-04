@@ -42,6 +42,18 @@ const LoginPage = (props) => {
 
   useEffect(() => {
     localStorage.removeItem('token');
+
+    // Check if user have just register a new account
+    if (localStorage.getItem('history') === 'register') {
+      const registerMail = localStorage.getItem('registerMail');
+      const registerPass = localStorage.getItem('registerPass');
+
+      if (registerMail && registerPass) {
+        // Fill in mail and password field of Login Page
+        setMail(registerMail);
+        setPassword(registerPass);
+      }
+    }
   }, []);
 
   const onChange = (value, fieldName) => {

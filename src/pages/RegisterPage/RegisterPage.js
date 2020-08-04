@@ -80,6 +80,11 @@ const RegisterPage = (props) => {
     }
   };
 
+  useEffect(() => {
+    // Set browser history
+    localStorage.setItem('history', 'register');
+  }, []);
+
   return (
     <div className='register-page-container'>
       <AccountLayout

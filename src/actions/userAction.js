@@ -69,7 +69,7 @@ const login = ({ mail, password, history }) => {
   };
 };
 
-const register = ({ mail, password, name, phone }) => {
+const register = ({ mail, password, name, phone, history }) => {
   return async (dispatch) => {
     try {
       dispatch({ type: REGISTER_LOADING });
@@ -89,6 +89,11 @@ const register = ({ mail, password, name, phone }) => {
       const { data } = res; // {email, name, phone, id}
 
       if (data.msg === REGISTER_SUCCESS_MESSAGE) {
+        localStorage.setItem('registerMail', mail);
+        localStorage.setItem('registerPass', password);
+
+        history.push('/login');
+
         dispatch({ type: REGISTER_SUCCESS, payload: data });
       } else {
         dispatch({ type: REGISTER_FAIL, payload: data.msg });

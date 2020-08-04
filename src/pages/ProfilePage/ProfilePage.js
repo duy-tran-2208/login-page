@@ -154,6 +154,11 @@ const ProfilePage = (props) => {
   };
 
   useEffect(() => {
+    // Set browser history
+    localStorage.setItem('history', 'profile');
+  }, []);
+
+  useEffect(() => {
     const displaySpinner = () => {
       if (
         (loading.update || loading.changePassword || loading.uploadFile) &&
