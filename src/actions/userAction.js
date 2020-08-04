@@ -19,6 +19,8 @@ import {
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
 
+import encode from '../util/encode';
+
 const LOGIN_SUCCESS_MESSAGE = 'Login succeeded.';
 const REGISTER_SUCCESS_MESSAGE = 'Created succeeded!';
 const CHANGE_PASS_SUCCESS_MESSAGE = 'Changed succeeded.';
@@ -29,7 +31,7 @@ const handleRemember = (mail, password) => {
 
   if (rememberValue == 'true') {
     localStorage.setItem('rememberMail', mail);
-    localStorage.setItem('rememberPass', password);
+    localStorage.setItem('rememberPass', encode(password));
   } else {
     localStorage.removeItem('rememberMail');
     localStorage.removeItem('rememberPass');
@@ -105,7 +107,7 @@ const register = ({ mail, password, name, phone, history }) => {
 
       if (data.msg === REGISTER_SUCCESS_MESSAGE) {
         localStorage.setItem('registerMail', mail);
-        localStorage.setItem('registerPass', password);
+        localStorage.setItem('registerPass', encode(password));
 
         history.push('/login');
 
