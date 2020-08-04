@@ -1,7 +1,10 @@
 const PASSWORD_REGEX = new RegExp(
   /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8}/
 );
-const MAIL_REGEX = new RegExp(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/);
+// const MAIL_REGEX = new RegExp(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/);
+const MAIL_REGEX = new RegExp(
+  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+);
 const NAME_REGEX = new RegExp(/^[a-zA-Z ]+$/);
 const PHONE_REGEX = new RegExp(/^\d+$/);
 
