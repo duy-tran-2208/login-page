@@ -236,7 +236,7 @@
   display: block;
 }
 
-@media (max-width: 880px) {
+@media (max-width: 940px) {
   .layout-container {
     width: 100%;
   }
