@@ -24,6 +24,18 @@ const REGISTER_SUCCESS_MESSAGE = 'Created succeeded!';
 const CHANGE_PASS_SUCCESS_MESSAGE = 'Changed succeeded.';
 const HOST = 'http://api.terralogic.ngrok.io/';
 
+const handleRemember = (mail, password) => {
+  const rememberValue = localStorage.getItem('isRemembered');
+
+  if (rememberValue == 'true') {
+    localStorage.setItem('rememberMail', mail);
+    localStorage.setItem('rememberPass', password);
+  } else {
+    localStorage.removeItem('rememberMail');
+    localStorage.removeItem('rememberPass');
+  }
+};
+
 const login = ({ mail, password, history }) => {
   let data = '';
   return async (dispatch) => {
@@ -50,6 +62,9 @@ const login = ({ mail, password, history }) => {
         const tokenData = localStorage.getItem('token');
 
         const info = jwt.decode(tokenData);
+
+        // Handle remember password function
+        handleRemember(mail, password);
 
         dispatch({
           type: LOGIN_SUCCESS,

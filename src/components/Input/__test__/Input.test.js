@@ -1,6 +1,6 @@
 import { shallow, mount } from 'enzyme';
 import React from 'react';
-import Input from '../components/Input/Input';
+import Input from '../Input';
 
 const setUp = (props = {}) => {
   const component = shallow(<Input {...props} />);

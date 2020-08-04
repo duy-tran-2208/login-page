@@ -56,6 +56,22 @@ const LoginPage = (props) => {
     }
   }, []);
 
+  useEffect(() => {
+    const isRememberValue = localStorage.getItem('isRemembered');
+
+    if (isRememberValue) {
+      const isRemember = isRememberValue === 'true' ? true : false;
+
+      if (isRemember) {
+        const mailData = localStorage.getItem('rememberMail');
+        const passData = localStorage.getItem('rememberPass');
+
+        setMail(mailData);
+        setPassword(passData);
+      }
+    }
+  }, []);
+
   const onChange = (value, fieldName) => {
     if (fieldName === 'mail') {
       setMail(value);

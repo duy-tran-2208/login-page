@@ -99,16 +99,30 @@ const AccountLayout = (props) => {
   const { login, register, history } = props;
   const { loading, error } = props;
 
+  const [remember, setRemember] = useState(false);
+
   let overlayRef = null;
 
   useEffect(() => {
     // const previousLink = history.location.pathname;
     // localStorage.setItem('history', previousLink);
+    const checkedValue = localStorage.getItem('isRemembered');
+    if (checkedValue) {
+      const checked = checkedValue === 'true' ? true : false;
+      setRemember(checked);
+    }
   }, []);
 
   useEffect(() => {
     displaySpinner();
   }, [loading]);
+
+  const handleRemember = (e) => {
+    const checked = e.target.checked;
+    const value = checked ? 'true' : 'false';
+    localStorage.setItem('isRemembered', value);
+    console.log(localStorage.getItem('isRemembered'));
+  };
 
   const displaySpinner = () => {
     if (loading && overlayRef) {
@@ -188,7 +202,16 @@ const AccountLayout = (props) => {
   const RememberElement = () => {
     return (
       <div className='form-check'>
-        <input className='form-check-input' type='checkbox' id='checkbox1' />
+        <input
+          className='form-check-input'
+          type='checkbox'
+          checked={remember}
+          id='checkbox1'
+          onClick={(e) => {
+            setRemember(!remember);
+            handleRemember(e);
+          }}
+        />
         <label className='form-check-label' htmlFor='checkbox1'>
           Remember password
         </label>
