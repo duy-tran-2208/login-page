@@ -6,6 +6,7 @@ import './ProfilePage.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { update, changePassword, uploadFile } from '../../actions/userAction';
+import defaultAvatar from '../../images/defaultAvatar.jpg';
 
 import {
   validName,
@@ -223,7 +224,14 @@ const ProfilePage = (props) => {
       <main>
         <div className='top'>
           <div className='avatar'>
-            <img src={avatar} />
+            {
+              // Check if user already have a avatar image
+              avatar === '' ? (
+                <img src={defaultAvatar} alt='avatar' />
+              ) : (
+                <img src={avatar} alt='avatar' />
+              )
+            }
             <PencilSvg onClick={() => uploadInput.click()} />
           </div>
 
