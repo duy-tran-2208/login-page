@@ -104,8 +104,21 @@ const AccountLayout = (props) => {
   let overlayRef = null;
 
   useEffect(() => {
-    // const previousLink = history.location.pathname;
-    // localStorage.setItem('history', previousLink);
+    const isRemember = localStorage.getItem('isRemembered');
+    if (isRemember === 'true') {
+      // If maail and password already been filled
+      if (mail !== '' && password !== '') {
+        // Log in if fields are valid and redirect to Profile page
+        if (validMail(mail) && validPassword(password)) {
+          login({ mail, password, history });
+        } else {
+          // console.log('INVALID TO LOGIN');
+        }
+      }
+    }
+  }, [mail, password]);
+
+  useEffect(() => {
     const checkedValue = localStorage.getItem('isRemembered');
     if (checkedValue) {
       const checked = checkedValue === 'true' ? true : false;

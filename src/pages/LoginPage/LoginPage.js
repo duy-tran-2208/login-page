@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-import { withRouter } from 'react-router';
-
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/userAction';
-
-import axios from 'axios';
-import jwt from 'jsonwebtoken';
+import decode from '../../util/decode';
 
 import './LoginPage.css';
-import logo from '../../images/brand-logo.svg';
-import letter from '../../images/Suche.svg';
-import rightImg from '../../images/solution-experts.png';
 
 import AccountLayout from '../../layout/AccountLayout/AccountLayout';
 
@@ -46,7 +39,7 @@ const LoginPage = (props) => {
     // Check if user have just register a new account
     if (localStorage.getItem('history') === 'register') {
       const registerMail = localStorage.getItem('registerMail');
-      const registerPass = localStorage.getItem('registerPass');
+      const registerPass = decode(localStorage.getItem('registerPass'));
 
       if (registerMail && registerPass) {
         // Fill in mail and password field of Login Page
@@ -64,13 +57,15 @@ const LoginPage = (props) => {
 
       if (isRemember) {
         const mailData = localStorage.getItem('rememberMail');
-        const passData = localStorage.getItem('rememberPass');
+        const passData = decode(localStorage.getItem('rememberPass'));
 
         setMail(mailData);
         setPassword(passData);
       }
     }
   }, []);
+
+  // Redirect user to Profile page with filled mail and password input
 
   const onChange = (value, fieldName) => {
     if (fieldName === 'mail') {
