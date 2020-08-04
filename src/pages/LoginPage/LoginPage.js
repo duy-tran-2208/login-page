@@ -29,7 +29,7 @@ const inputElements = [
     placeholder: 'Enter your password',
     icon: 'letter',
     fieldName: 'password',
-    id: 'new-pass',
+    id: 'current-pass',
   },
 ];
 

@@ -22,8 +22,6 @@ const Input = (props) => {
   const [reveal, setReveal] = useState(false); // reveal password
   const [error, setError] = useState('');
 
-  const iconEl = document.querySelector('svg');
-
   let errorRef = null;
   let lineRef = null;
   let inputRef = null;
@@ -214,7 +212,6 @@ const Input = (props) => {
           errorRef.classList.toggle('show');
         }}
       >
-        {/* <p className='error-msg'>{`Name is asd as das sa dasfadfasd sainvalid`}</p> */}
         <p className='error-msg'>{error}</p>
 
         <div className='arrow-down'></div>

@@ -22,7 +22,7 @@ const inputElements = [
     placeholder: 'Enter your password',
     icon: 'key',
     fieldName: 'password',
-    id: 'new-pass',
+    id: 'current-pass',
   },
   {
     label: 'Confirm Password',
