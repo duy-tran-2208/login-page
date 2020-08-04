@@ -78,6 +78,12 @@ const PencilSvg = (props) => {
   );
 };
 
+const handleLogout = () => {
+  localStorage.removeItem('isRemembered');
+  localStorage.removeItem('rememberMail');
+  localStorage.removeItem('rememberPass');
+};
+
 const ProfilePage = (props) => {
   const { user } = props;
   const { loading, error } = props;
@@ -351,7 +357,11 @@ const ProfilePage = (props) => {
           </button>
 
           <Link to='/login'>
-            <button type='button' className='button btn btn-primary btn-logout'>
+            <button
+              type='button'
+              className='button btn btn-primary btn-logout'
+              onClick={() => handleLogout()}
+            >
               Log out
             </button>
           </Link>
